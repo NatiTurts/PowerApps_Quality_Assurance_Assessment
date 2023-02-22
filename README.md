@@ -70,7 +70,6 @@ In order to successfully import and use this solution, the solution should be in
 ## Importing the solution
 
 Before importing this solution, you need to ensure that it is being imported into the same environment where you host your Power Platform Pipelines solution.
-
 Upon import, you will need to specify your QA Environment used within your Power Platform Pipeline and enter the environment ID into the `Quality Assurance Environment ID` variable. Should the variable not import successfully, simply open the imported solution and open the `Update QA Environment ID` flow. When you trigger the flow, enter the ID into the input field and the flow will update the flow accordingly.
 ![Flow](./assets/flow.png) 
 ---
