@@ -53,14 +53,14 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerapps-samples/main/samples/ClockTimePickerComponent/assets/preview.gif",
-        "alt": "Preview GIF"
+        "url": "https://raw.githubusercontent.com/pnp/powerapps-samples/main/samples/PowerApps_Quality_Assurance_Assessment/assets/LandingPage.png",
+        "alt": "Preview PNG"
       },
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/powerapps-samples/main/samples/ClockTimePickerComponent/assets/preview.png",
-        "alt": "Preview PNG"
+        "url": "https://raw.githubusercontent.com/pnp/powerapps-samples/main/samples/PowerApps_Quality_Assurance_Assessment/assets/preview.gif",
+        "alt": "Preview GIF"
       }
     ],
     "authors": [
