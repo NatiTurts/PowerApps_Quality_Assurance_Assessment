@@ -1,7 +1,7 @@
 ---
 page_type: sample
 languages:
-- powerapps-comma
+- powerapps
 products:
 - powerapps
 - canvas
@@ -21,7 +21,7 @@ ms.prod: power-apps
 
 ## Summary
 
-The solution is built alongside Power Platform Pipelines accessing all solutions deployed to a designated QA Environment. When a solution is in QA, the user can create a QA Assessment for the project, assign it to other users, manage checklist items, and submit a final QA grade for the solution.
+Inspired by the ALM Accelerator by PowerCAT, This solution is built alongside Power Platform Pipelines accessing all deployed solutions within your designated QA Environment. When a solution is in QA, the user can create a QA Assessment for the project, assign it to other users, manage checklist items, and submit a final QA grade for the solution.
   
 ![Preview](./assets/preview.gif)  
 
@@ -53,41 +53,76 @@ Version|Date|Comments
 
 ## Features
 
-This sample illustrates the following concepts:
+This sample solution offers the following capabilities:
 
-* The ability for users to interact with a clock to select a preferred time
-* Allowing for users to select a time by clicking on the clock numbers 
-* Allowing for users to select a time from the dropdowns
-* Allowing for users to select a time by increasing/deacreasing a selected hour and minute
-* Allowing for users to select am or pm times
-* Save the chosen time through an Output Property
-* Reset the times after saved or cleared
+* For users to view solutions deployed to their specified QA Environment when deployed using Power Platform Pipelines.
+* Enabling users to manage and create QA Assessment checklist items.
+* Allowing for users to create a QA Assessment for a solution deployed to the QA environment.
+* Assign QA Assessment to a specific user with a deadline.
+* Conduct a review, score and pass/fail checklist items and an entire QA Assessment.
+* Submit final QA Assessment grading.
+* View historical QA Assessments for various solution versions.
 
 ## Prerequisites
 
-### Using the component
+In order to successfully import and use this solution, the solution should be installed in your host environment where the Power Platform Pipelines solution has already been installed.
 
-To use the component in this sample, you'll need to pass the components Output Properties to a local or global variable within the Canvas App.
+## Importing the solution
 
-The component consists of the following Output Properties that can pass through data:
-`Hour` - the selected hour in HH format.
-`Minute` - the selected minute
-`FullTime` - the full time selected in HH:mm format
-`AMPM` - the selected Ante/Post Meridiem
+Before importing this solution, you need to ensure that it is being imported into the same environment where you host your Power Platform Pipelines solution.
 
-The two Input Properties are:
-`SaveTime`
-`Close`
+Upon import, you will need to specify your QA Environment used within your Power Platform Pipeline and enter the environment ID into the `Quality Assurance Environment ID` variable. Should the variable not import successfully, simply open the imported solution and open the `Update QA Environment ID` flow. When you trigger the flow, enter the ID into the input field and the flow will update the flow accordingly.
+![Flow](./assets/flow.png) ![Variable](./assets/variable.png) 
 
-The pass the selected time from the clock component to a variable within the app, assign a `Set()` or `UpdateContext({})` function to the component Input Property `SaveTime`. When the `Save` button is pressed, the selected time will be passed through and the clock will reset.
+## Using the solution
+### Importing QA Items
+Although you can create your own Assessment Categories and Items, included in this repository are two Excel files you can import into the following tables:
+* `QA Choices` - Import into the natiturt_QAAssessmentChoices table. Map the Excel `Choices` column to the tables `Choices` column.
+* `QA Items` - Import into natiturt_QAAssessmentItems table. Map the Excel `Category` column to the tables `Category` column and the Excel `Item` column to the tables `Item` column.
+![QA Choices](./assets/QA_Choices.xlsx) ![QA Items](./assets/QA_Items.xlsx) 
 
-When the `Close` button is pressed, the clock will reset.
+### Landing Page
+Once you have completed the import, you can open the `Quality Assurance Assessment` Canvas application. If you have no solutions in QA, a message will appear advising so. You can also confirm your QA Environment details by referring the footer text.
 
+The `Manage Items` button above the solution gallery will navigate you to the `Manage Items` page where you can add, create, edit and delete both checklist items and categories.
 
+If you do have solutions in your QA Environment, they will appear in the gallery displaying the current version and last deployed date. You will also be able to create a new QA Assessment by clicking the `New Review` button. This will open up a side bar allowing you to add notes, a due date and assign the assessment to another user. When you click `Create`, the assessment will generate and you will be navigated to the assessment page.
+
+Additionally, should an assessment for a solution be in progress, you can select the arrow to the far right of the solution in the gallery, and you will be navigated to the solutions active assessment.
+
+Lastly, to view previous assessments for a solution, you can click the `History` icon for a solution and you will be redirected to view historical assessments and results.
+
+### Manage Items Page
+Within this page, if you imported the forementioned templates, you should have a variety of checklist categories and items already loaded. The top gallery will display available categories and toggling between them will filter the corresponding checklist items below. Clicking on the `Add Item` button will open a side bar allowing you to create new Categories and Items. The default Categories will default to a dropdown, but by clicking the `+` icon it will change to free text allowing you to add new categories. The `Open` icon above the category will open up another slider displaying all current categories. You can delete categories accordingly. This will also delete associated items.
+
+When adding a new item, simply complete the required fields and click `Add Item`. This will add the new item to the gallery and create a new category if required.
+
+By clicking the `Trash` icon within a specific item will again open the side bar allowing you to edit the item and delete it. 
+
+### Assessment Page
+When an assessment has been created, you will be able to view all available checklist items within a gallery on the Assessment Page. Within this page, you can update items accordingly by adding comments, scoring and passing/failing an item.
+Additionally, should an item not be require, you can remove it from the list. Be sure to click the `Save` button to save the assessment and apply item removals.
+
+When you are ready to complete the QA Assessment, press the `Submit` button to open the side bar. In the side bar, you will be requested to score the overall solution and either pass or fail it. You can add feedback as well. The scoring matrix works on the following principle:
+* `1` - Item/Solution Failed to meet quality standards and requirements.
+* `2` - Item/Solution borderline met quality standards and requirements.
+* `3` - Item/Solution exceeded quality standards and requirements.
+
+The scoring matrix is determined by each individual item score against the overall number of items in the assessment. For example:
+There are 100 items in a QA Assessment. If each item is graded out of 3, the total QA Assessment score should have a max score of 300.
+If all the items were scored and the sum of the 100 scores are 289, the solution will be scored as 289/300 (96%).
+
+Once you have scored the overall solution and confirmed whether it passed or failed the assessment, you can submit and the assessment will be marked accordingly. 
+Should an assessment fail, the user can create another QA assessment when ready, alternatively, if a solution has passed, the user can proceed with a newer QA if a later version is deployed.
+
+### Previous Assessments Page
+To view active or completed assessments, clicking the `Open` icon above the solution on the Landing Page will direct you to the Previous Assessments Page for that solution. On this page, users will be able to view active and passed assessments, who the developer was and who completed the assessment, what version the solution was and the overall score, feedback and result of that assessment. 
+
+The user can also open the assessment items and view individual item scores if required. 
 
 ## Data Sources
  
-None
+Dataverse
 
 ## Minimal Path to Awesome
 

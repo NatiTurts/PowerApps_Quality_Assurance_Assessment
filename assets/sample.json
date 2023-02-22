@@ -9,7 +9,7 @@
     "title": "PowerApps Quality Assurance Assessment",
     "shortDescription": "A Quality Assurance tool integrating with Power Platform Pipelines allowing users to conduct QA Assessments on solutions deployed to a QA Environment.",
     "longDescription": [
-      "The solution is built alongside Power Platform Pipelines accessing all solutions deployed to a designated QA Environment. When a solution is in QA, the user can create a QA Assessment for the project, assign it to other users, manage checklist items, and submit a final QA grade for the solution."
+      "Inspired by the ALM Accelerator by PowerCAT, This solution is built alongside Power Platform Pipelines accessing all deployed solutions within your designated QA Environment. When a solution is in QA, the user can create a QA Assessment for the project, assign it to other users, manage checklist items, and submit a final QA grade for the solution."
     ],
     "url": "https://github.com/pnp/powerapps-samples/tree/main/samples/PowerApps_Quality_Assurance_Assessment",
     "products": [
