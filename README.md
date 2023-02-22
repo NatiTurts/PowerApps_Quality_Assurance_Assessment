@@ -81,7 +81,9 @@ Upon import, you will need to specify your QA Environment used within your Power
 Although you can create your own Assessment Categories and Items, included in this repository are two Excel files you can import into the following tables:
 * `QA Choices` - Import into the natiturt_QAAssessmentChoices table. Map the Excel `Choices` column to the tables `Choices` column.
 * `QA Items` - Import into natiturt_QAAssessmentItems table. Map the Excel `Category` column to the tables `Category` column and the Excel `Item` column to the tables `Item` column.
-![QA Choices](./assets/QA_Choices.xlsx) ![QA Items](./assets/QA_Items.xlsx) 
+
+![QA Choices](./assets/QA_Choices.xlsx) 
+![QA Items](./assets/QA_Items.xlsx) 
 
 ### Landing Page
 Once you have completed the import, you can open the `Quality Assurance Assessment` Canvas application. If you have no solutions in QA, a message will appear advising so. You can also confirm your QA Environment details by referring the footer text.
